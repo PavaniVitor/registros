@@ -18,6 +18,6 @@ void list_insert(LIST *list, DATA data);
 
 void list_remove(LIST *list, const unsigned int pos);
 
-DATA *get_element(const unsigned int pos);
+DATA *get_element(LIST *list, const unsigned int pos);
 
 #endif

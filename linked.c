@@ -1,9 +1,10 @@
 #include <stdlib.h>
 #include "linked.h"
 
+
 #include <stdio.h>
 
-#include <string.h>
+
 
 LIST *init_list(){
     LIST *list = NULL;
@@ -40,26 +41,47 @@ void list_insert(LIST *list, DATA data){
     return;
 }
 
-void list_remove(LIST *list, const unsigned int pos){
+DATA *get_element(LIST *list, const unsigned int pos){
     int i = 0;
+    DATA *data = NULL;
     NODE *cursor = NULL;
-    DATA aux; 
     cursor = list->head;
-  
+    if(pos >= list->lenght)
+    {
+        // erro trying to get a element out of list
+        return NULL;
+    }
+
     while(i < pos){
         // go to pos
         cursor = cursor->next;
         i++;
     }
-    aux = *(cursor->data);
+    data = (cursor->data);
+
+    return data;
+}
+
+void list_remove(LIST *list, const unsigned int pos){
+    int i = 0;
+    NODE *cursor = NULL;
+    DATA aux; 
+    cursor = list->head;
+    
+    if(pos >= list->lenght)
+    {
+        // erro trying to get a element out of list
+        return;
+    }
+
+    while(i < pos){
+        // go to pos
+        cursor = cursor->next;
+        i++;
+    }
+    
     printf("data lida: %i\n" , aux.i );
     // remove element
     
     return;
-}
-
-DATA *get_element(const unsigned int pos){
-    DATA *data;
-
-    return data;
 }

@@ -24,6 +24,12 @@ int main(){
     list_insert(list, d3);
     list_insert(list, d4);
 
+    get_element(list, 0);
+    get_element(list, 1);
+    get_element(list, 2);
+    get_element(list, 3);
+    get_element(list, 5);
+
     list_remove(list, 0);
     list_remove(list, 1);
     list_remove(list, 2);
