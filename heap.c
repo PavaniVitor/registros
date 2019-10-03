@@ -1,7 +1,7 @@
 #include "heap.h"
 
 FILE *heap_create(){
-
+    FILE *fp = NULL;
     return fp;
 }
 
