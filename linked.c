@@ -49,6 +49,7 @@ DATA *get_element(LIST *list, const unsigned int pos){
     if(pos >= list->lenght)
     {
         // erro trying to get a element out of list
+        printf("elemento %i fora da lista\n" , pos);
         return NULL;
     }
 
@@ -65,22 +66,44 @@ DATA *get_element(LIST *list, const unsigned int pos){
 void list_remove(LIST *list, const unsigned int pos){
     int i = 0;
     NODE *cursor = NULL;
-    DATA aux; 
+    NODE *next = NULL;
     cursor = list->head;
     
-    if(pos >= list->lenght)
-    {
-        // erro trying to get a element out of list
-        return;
+    if(pos == 0){
+        
+        list->head = cursor->next;
+        free(cursor->data);
+        free(cursor);
+        list->lenght -= 1;
     }
-
-    while(i < pos){
+    else if(pos == list->lenght -1){
+        
+        while(i < pos){
         // go to pos
         cursor = cursor->next;
         i++;
+        }
+        
+        free(cursor->data);
+        free(cursor);
+        list->lenght -= 1;
     }
-    
-    printf("data lida: %i\n" , aux.i );
+    else{
+        while(i < pos - 1){
+            // go to pos
+            next = cursor->next;
+            i++;
+        }
+
+        cursor = next->next;
+        
+        free(cursor->data);
+        next->next = cursor->next;
+        free(cursor);
+
+        list->lenght -= 1;
+    }
+
     // remove element
     
     return;
