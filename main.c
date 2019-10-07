@@ -9,9 +9,12 @@ int main(){
     DATA d0;
     FILE *fp = NULL;
     int i;
-    
-    createFile();
-    auxCreateFile();
+    if (!fopen(FILE_PATH, "rb")){
+        createFile();
+    }
+    if (!fopen(AUX_FILE_PATH, "rb")){
+        auxCreateFile();
+    }
 
     fp = fopen(FILE_PATH, "wb+");
     

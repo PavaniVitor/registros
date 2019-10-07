@@ -16,8 +16,8 @@ void sortedInsert(DATA *data){
         buff = (DATA*)malloc(BUFFER_SIZE);
     }
     buff[pos] = *data;
-    pos += 1;
     
+    pos += 1;
     if (pos == size){
         // hora de gravar no arquivo
         printf("lotou o buffer \n");
@@ -27,7 +27,8 @@ void sortedInsert(DATA *data){
         AUX_FILE_HEADER header;
         fread(&header, sizeof(AUX_FILE_HEADER), 1, fp);
         printf("numero lido do header: %d", header.count);
-        if(header.count >= AUX_MAX_COUNT - pos){
+
+        if(header.count >= AUX_MAX_COUNT - pos +1){
             // grava os registros do arquivo auxiliar no arquivo principal (ordena)
             // grava os registros do buffer no arquivo auxiliar
             // atualiza os headers
