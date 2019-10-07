@@ -3,7 +3,7 @@
 
 #define FILE_PATH "sorted.bin" 
 #define AUX_FILE_PATH "sortedbuffer.bin"
-#define AUX_MAX_COUNT 4096 // numero de registros suportados no arquivo auxiliar
+#define AUX_MAX_COUNT 5*4096 // numero de registros suportados no arquivo auxiliar
 #define FILE_NAME "Registros Ordenados"
 
 /* 
@@ -30,7 +30,7 @@ typedef struct auxFileHeader{
 }AUX_FILE_HEADER;
 
 void createFile();
-void createAuxFile();
+void auxCreateFile();
 
 void updateStamp(unsigned int count);
 void updateAuxStamp(unsigned int count);

@@ -20,21 +20,33 @@ void sortedInsert(DATA *data){
     
     if (pos == size){
         // hora de gravar no arquivo
-        pos = 0;
+        printf("lotou o buffer \n");
+
         FILE *fp = NULL;
-        fp = fopen(AUX_FILE_PATH, "wb+");
+        fp = fopen(AUX_FILE_PATH, "rb+");
         AUX_FILE_HEADER header;
         fread(&header, sizeof(AUX_FILE_HEADER), 1, fp);
+        printf("numero lido do header: %d", header.count);
         if(header.count >= AUX_MAX_COUNT - pos){
             // grava os registros do arquivo auxiliar no arquivo principal (ordena)
             // grava os registros do buffer no arquivo auxiliar
             // atualiza os headers
+            
+            pos = 0;
+            printf("debugado\n");
         }
         
         else{
-            // atualizar o header
-            // grava o arquivo auxiliar (heap)
-            
+            int j = 0;
+            printf("to gravando o auxiliar \n");
+            fseek(fp, 0, SEEK_END);
+            j = fwrite(buff, sizeof(DATA), pos, fp);
+            printf("%d \n" , j);
+            fseek(fp, 0, SEEK_SET);
+            header.count += pos;
+            printf("numero gravado no header: %d ", header.count);
+            fwrite(&header, sizeof(AUX_FILE_HEADER), 1, fp);            
+            pos = 0;
         }
         fclose(fp);
     }
