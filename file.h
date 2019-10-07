@@ -2,7 +2,8 @@
 #define FILE_UTIL
 
 #define FILE_PATH "sorted.bin" 
-#define AUX_FILE_PATH "sortedbuffer.bin" 
+#define AUX_FILE_PATH "sortedbuffer.bin"
+#define AUX_MAX_COUNT 4096 // numero de registros suportados no arquivo auxiliar
 #define FILE_NAME "Registros Ordenados"
 
 /* 
