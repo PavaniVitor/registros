@@ -15,17 +15,23 @@ deve ser igual ao tamanho do bloco do sistema de arquivos
 
 #include <time.h>
 
+
 typedef struct fileHeader{
     char fileName[256];
     time_t creationStamp;
     time_t modStamp;
+    unsigned int count;
 }FILE_HEADER;
 
 typedef struct auxFileHeader{
-    time_t modStamp;
+    time_t creationStamp;
     unsigned int count;
 }AUX_FILE_HEADER;
 
 void createFile();
+void createAuxFile();
+
+void updateStamp(unsigned int count);
+void updateAuxStamp(unsigned int count);
 
 #endif
