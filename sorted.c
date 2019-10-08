@@ -4,6 +4,7 @@
 #include "file.h"
 #include "sorted.h"
 #include "data.h"
+#include "mergesort.h"
 
 
 void sortedInsert(DATA *data){
